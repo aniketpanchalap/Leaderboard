@@ -2,129 +2,258 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leaderboard</title>
 
 <style>
+/* 🔥 GOLDEN GLOW AVATAR */
+.top-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  border: 3px solid #facc15;
+
+  box-shadow:
+    0 0 0 2px rgba(250,204,21,0.4),
+    0 0 12px rgba(250,204,21,0.6),
+    0 0 22px rgba(250,204,21,0.5);
+
+  animation: glowPulse 2s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow:
+      0 0 0 2px rgba(250,204,21,0.4),
+      0 0 10px rgba(250,204,21,0.5);
+  }
+  50% {
+    box-shadow:
+      0 0 0 4px rgba(250,204,21,0.6),
+      0 0 20px rgba(250,204,21,0.9);
+  }
+  100% {
+    box-shadow:
+      0 0 0 2px rgba(250,204,21,0.4),
+      0 0 10px rgba(250,204,21,0.5);
+  }
+}
+
+/* 👑 FIXED CROWN (ONLY CHANGE) */
+.avatar-wrap {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.crown {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 16px;
+
+  animation: crownBounce 1.2s ease infinite;
+  filter: drop-shadow(0 0 6px gold);
+}
+
+@keyframes crownBounce {
+  0% { transform: translate(-50%, 0); }
+  30% { transform: translate(-50%, -4px); }
+  50% { transform: translate(-50%, 0); }
+  70% { transform: translate(-50%, -2px); }
+  100% { transform: translate(-50%, 0); }
+}
+
+/* ===== FONT ===== */
+@font-face {
+  font-family: 'OceanTrace';
+  src: url('OceanTrace.ttf');
+}
+
+/* ===== GLOBAL ===== */
+:root {
+  --page-padding: 16px;
+  --section-gap: 12px;
+  --row-gap: 8px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, sans-serif;
-  background: #0b1220;
+  background: #f4f4f4;
   display: flex;
   justify-content: center;
-  color: white;
 }
 
 .container {
   width: 100%;
   max-width: 420px;
-  padding: 10px;
+  padding: var(--page-padding);
 }
 
-h2 {
+/* ===== HEADER ===== */
+.title {
+  font-family: 'OceanTrace';
+  font-size: 40px;
   text-align: center;
-  font-size: 16px;
+
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin: 0;
+  line-height: 1.05;
 }
 
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.badge {
+  margin: 10px auto;
+  display: inline-block;
+  padding: 8px 25px;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #2563eb, #22c55e);
+  color: white;
+  font-weight: 600;
+}
+
+/* ===== TOP SECTION ===== */
 .top {
   display: flex;
+  flex-wrap: wrap;          /* 🔥 allows multiple rows */
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: 8px;
 }
 
-.player {
+.top-card {
+  flex: 1;
+  background: #e6f7ec;
+  border-radius: 16px;
+  padding: 15px;
   text-align: center;
-  position: relative;
+  border: 2px solid #86efac;
 }
 
-.avatar {
-  width: 70px;
-  height: 70px;
+.top-avatar {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  border: 3px solid gold;
-  animation: glow 2s infinite;
+  border: 3px solid #22c55e;
 }
 
-.crown {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 18px;
-  animation: crownJump 1s ease;
+.top-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 4px;
 }
 
-@keyframes crownJump {
-  0% { transform: translate(-50%, -10px); }
-  50% { transform: translate(-50%, -20px); }
-  100% { transform: translate(-50%, -10px); }
+.top-score {
+  font-size: 25px;
+  font-weight: bold;
+  color: #16a34a;
 }
 
-@keyframes glow {
-  0% { box-shadow: 0 0 8px rgba(255,215,0,0.4); }
-  50% { box-shadow: 0 0 18px rgba(255,215,0,0.9); }
-  100% { box-shadow: 0 0 8px rgba(255,215,0,0.4); }
-}
-
+/* ===== LIST ===== */
 .list {
-  background: #111827;
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
   padding: 6px;
+  gap: 4px;
 }
 
 .row {
+  background: white;
+  border-radius: 14px;
+  padding: 8px 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
-  border-radius: 10px;
-  margin-bottom: 6px;
-  background: #1f2937;
-  transition: transform 0.4s ease, background 0.4s ease;
+
+  /* ✨ ADD THIS */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.4s ease forwards;
 }
 
 .left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .rank {
-  width: 20px;
   font-size: 12px;
+  color: #6b7280;
+  width: 18px;
 }
 
-.small-avatar {
-  width: 30px;
-  height: 30px;
+.avatar {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
 }
 
+/* ===== SCORE CIRCLE ===== */
 .score {
-  background: #0f172a;
-  padding: 4px 10px;
-  border-radius: 8px;
-  color: #a3e635;
-  font-weight: bold;
+  min-width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
 }
 
-/* 🔥 movement feedback */
-.move-up {
-  background: rgba(16,185,129,0.25);
+/* COLOR VARIANTS */
+.blue { background: #2563eb; }
+.green { background: #22c55e; }
+.light { background: #60a5fa; }
+.soft { background: #4ade80; }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.footer span {
+  color: #22c55e;
 }
 
-.move-down {
-  background: rgba(239,68,68,0.25);
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* 🎯 rank change badge */
-.delta {
-  font-size: 10px;
-  margin-left: 4px;
-}
+/* stagger delay (one by one effect) */
+.row:nth-child(1) { animation-delay: 0.05s; }
+.row:nth-child(2) { animation-delay: 0.1s; }
+.row:nth-child(3) { animation-delay: 0.15s; }
+.row:nth-child(4) { animation-delay: 0.2s; }
+.row:nth-child(5) { animation-delay: 0.25s; }
+.row:nth-child(6) { animation-delay: 0.3s; }
+.row:nth-child(7) { animation-delay: 0.35s; }
+.row:nth-child(8) { animation-delay: 0.4s; }
+.row:nth-child(9) { animation-delay: 0.45s; }
+.row:nth-child(10) { animation-delay: 0.5s; }
+.row:nth-child(11) { animation-delay: 0.55s; }
 
-.up { color: #22c55e; }
-.down { color: #ef4444; }
+.row {
+  transition: transform 0.5s ease, background 0.3s;
+}
 
 </style>
 </head>
@@ -132,16 +261,25 @@ h2 {
 <body>
 
 <div class="container">
-  <h2>🏆 Leaderboard</h2>
-  <div class="top" id="top"></div>
-  <div class="list" id="list"></div>
+
+<div class="title">Maa ki khushi</div>
+<div class="subtitle">Mother’s Day Special</div>
+
+<div style="text-align:center">
+  <div class="badge">LEADERBOARD</div>
+</div>
+
+<div class="top" id="top"></div>
+<div class="list" id="list"></div>
+
+<div class="footer">
+  Keep booking. <span>Keep smiling.</span>
+</div>
+
 </div>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbw5bdTrnLF5mtzqIpElHnd-wvQDf_Rc-if73UsDWLnNZYPqsU9I367uyKUhbejZ8Wd3aA/exec";
-
-let rowMap = {};
-let previousPositions = {};
 
 async function loadData() {
   const res = await fetch(API_URL);
@@ -149,96 +287,56 @@ async function loadData() {
 
   data.sort((a,b)=>b.score-a.score);
 
-  const list = document.getElementById("list");
-  const topContainer = document.getElementById("top");
+  const topDiv = document.getElementById("top");
+  const listDiv = document.getElementById("list");
 
-  // ---------- TOP ----------
+  topDiv.innerHTML = "";
+  listDiv.innerHTML = "";
+
   const topScore = data[0]?.score;
-  const leaders = data.filter(p => p.score === topScore);
+  const toppers = data.filter(p => p.score === topScore);
 
-  topContainer.innerHTML = "";
-
-  leaders.forEach(p => {
+  toppers.forEach(p=>{
     const div = document.createElement("div");
-    div.className = "player";
+    div.className = "top-card";
+
     div.innerHTML = `
-      <div class="crown">👑</div>
-      <img class="avatar" src="${p.photo}">
-      <div>${p.name}</div>
-      <div style="color:#a3e635;font-weight:bold">${p.score}</div>
+      <div class="avatar-wrap">
+        <div class="crown">👑</div>
+        <img class="top-avatar" src="${p.photo}">
+      </div>
+      <div class="top-name">${p.name}</div>
+      <div class="top-score">${p.score}</div>
     `;
-    topContainer.appendChild(div);
+
+    topDiv.appendChild(div);
   });
 
-  // ---------- FLIP START ----------
-  const first = {};
-  Object.keys(rowMap).forEach(name => {
-    first[name] = rowMap[name].getBoundingClientRect().top;
-  });
+  const rest = data.filter(p => p.score !== topScore);
 
-  // ---------- RENDER ----------
-  data.forEach((item, index) => {
+  let rank = toppers.length + 1;
+  const colors = ["blue","green","light","soft"];
 
-    let row = rowMap[item.name];
-
-    if(!row){
-      row = document.createElement("div");
-      row.className = "row";
-
-      row.innerHTML = `
-        <div class="left">
-          <div class="rank"></div>
-          <img class="small-avatar">
-          <div class="name"></div>
-        </div>
-        <div class="score"></div>
-      `;
-
-      rowMap[item.name] = row;
+  rest.forEach((p, i)=>{
+    if(i > 0 && p.score !== rest[i-1].score){
+      rank = i + toppers.length + 1;
     }
 
-    const oldIndex = previousPositions[item.name];
-    const newIndex = index;
+    const row = document.createElement("div");
+    row.className = "row";
 
-    const delta = oldIndex !== undefined ? oldIndex - newIndex : 0;
+    const color = colors[i % colors.length];
 
-    row.querySelector(".rank").innerText = index + 1;
-    row.querySelector(".name").innerHTML = `
-      ${item.name}
-      ${delta > 0 ? `<span class="delta up">+${delta}</span>` : ""}
-      ${delta < 0 ? `<span class="delta down">${delta}</span>` : ""}
+    row.innerHTML = `
+      <div class="left">
+        <div class="rank">${rank}</div>
+        <img class="avatar" src="${p.photo}">
+        <div>${p.name}</div>
+      </div>
+      <div class="score ${color}">${p.score}</div>
     `;
-    row.querySelector(".score").innerText = item.score;
-    row.querySelector(".small-avatar").src = item.photo;
 
-    // movement color
-    row.classList.remove("move-up","move-down");
-    if(delta > 0) row.classList.add("move-up");
-    if(delta < 0) row.classList.add("move-down");
-
-    setTimeout(()=>row.classList.remove("move-up","move-down"),600);
-
-    list.appendChild(row);
-    previousPositions[item.name] = newIndex;
-  });
-
-  // ---------- FLIP ANIMATION ----------
-  Object.keys(rowMap).forEach(name => {
-    const row = rowMap[name];
-
-    const last = row.getBoundingClientRect().top;
-    const prev = first[name];
-
-    if(prev !== undefined){
-      const diff = prev - last;
-
-      if(diff){
-        row.style.transform = `translateY(${diff}px)`;
-        requestAnimationFrame(()=>{
-          row.style.transform = "";
-        });
-      }
-    }
+    listDiv.appendChild(row);
   });
 }
 
