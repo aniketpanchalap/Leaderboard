@@ -1,224 +1,300 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ✅ GOOGLE FONT -->
+<title>Maa Ki Khushi</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
 
 <style>
 
 /* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: -apple-system, sans-serif;
-  background: #f4f4f4;
-  display: flex;
-  justify-content: center;
+
+body{
+  margin:0;
+  background:#f4f4f4;
+  font-family:-apple-system,sans-serif;
+  display:flex;
+  justify-content:center;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  padding: 16px;
+.container{
+  width:100%;
+  max-width:430px;
+  padding:16px;
 }
 
 /* ===== TITLE ===== */
-.title {
-  font-family: 'Oleo Script', cursive;
-  font-size: 40px;
-  text-align: center;
 
-  background: linear-gradient(90deg, #2563eb, #22c55e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.title{
+  font-family:'Oleo Script',cursive;
+  font-size:44px;
+  text-align:center;
+  margin:0;
+  line-height:1;
 
-  margin: 0;
-  line-height: 1.05;
+  background:linear-gradient(90deg,#2563eb,#22c55e);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.subtitle {
-  text-align: center;
-  color: #6b7280;
-  font-size: 18px;
-  margin-top: 2px;
+.subtitle{
+  text-align:center;
+  color:#6b7280;
+  font-size:18px;
+  margin-top:4px;
 }
 
-/* ===== BADGE ===== */
-.badge {
-  margin: 10px auto;
-  display: inline-block;
-  padding: 8px 25px;
-  border-radius: 30px;
-  background: linear-gradient(90deg, #2563eb, #22c55e);
-  color: white;
-  font-weight: 600;
+/* ===== TABS ===== */
+
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:18px 0;
 }
 
-/* ===== TOP SECTION ===== */
-.top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+.tab-btn{
+  flex:1;
+  border:none;
+  border-radius:30px;
+  background:white;
+  padding:11px;
+  font-size:14px;
+  font-weight:700;
+  color:#1f2937;
+  cursor:pointer;
+  transition:0.3s;
 }
 
-.top-card {
-  flex: 1;
-  background: #e6f7ec;
-  border-radius: 16px;
-  padding: 15px;
-  text-align: center;
-  border: 2px solid #86efac;
+.tab-btn.active{
+  background:linear-gradient(90deg,#2563eb,#22c55e);
+  color:white;
+  box-shadow:0 4px 14px rgba(34,197,94,0.35);
 }
 
-.avatar-wrap {
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+/* ===== TOP CARD ===== */
+
+.top{
+  margin-bottom:10px;
 }
 
-.crown {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
-  animation: crownBounce 1.2s ease infinite;
-  filter: drop-shadow(0 0 6px gold);
+.top-card{
+  background:#e8f9ef;
+  border:2px solid #86efac;
+  border-radius:22px;
+  padding:10px;
+  position:relative;
 }
 
-@keyframes crownBounce {
-  0% { transform: translate(-50%, 0); }
-  30% { transform: translate(-50%, -4px); }
-  50% { transform: translate(-50%, 0); }
-  70% { transform: translate(-50%, -2px); }
-  100% { transform: translate(-50%, 0); }
+.crown{
+  position:absolute;
+  top:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:20px;
+  animation:crownBounce 1.2s infinite;
+  filter:drop-shadow(0 0 6px gold);
 }
 
-.top-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 3px solid #facc15;
-
-  box-shadow:
-    0 0 0 2px rgba(250,204,21,0.4),
-    0 0 12px rgba(250,204,21,0.6),
-    0 0 22px rgba(250,204,21,0.5);
-
-  animation: glowPulse 2s infinite ease-in-out;
+@keyframes crownBounce{
+  0%{transform:translateX(-50%) translateY(0);}
+  50%{transform:translateX(-50%) translateY(-4px);}
+  100%{transform:translateX(-50%) translateY(0);}
 }
 
-@keyframes glowPulse {
-  0% { box-shadow: 0 0 0 2px rgba(250,204,21,0.4); }
-  50% { box-shadow: 0 0 0 4px rgba(250,204,21,0.8); }
-  100% { box-shadow: 0 0 0 2px rgba(250,204,21,0.4); }
+.top-grid{
+  display:grid;
+  grid-template-columns:40px 90px 1fr 50px;
+  gap:10px;
+  align-items:center;
 }
 
-.top-name {
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: 4px;
+.top-zone{
+  font-size:20px;
+  font-weight:900;
 }
 
-.top-score {
-  font-size: 25px;
-  font-weight: bold;
-  color: #16a34a;
+.top-total{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#22c55e;
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:18px;
+  font-weight:800;
+}
+
+.member-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  gap:3px;
+}
+
+.member-left{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.member-photo{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.member-name{
+  font-size:14px;
+  font-weight:600;
+}
+
+.member-score{
+  font-size:16px;
+  font-weight:800;
+  color:#16a34a;
 }
 
 /* ===== LIST ===== */
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 9px;
+
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
 
-.row {
-  background: white;
-  border-radius: 14px;
-  padding: 10px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.row{
+  background:white;
+  border-radius:18px;
+  padding:9px 14px;
 
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeIn 0.4s ease forwards;
-  transition: transform 0.5s ease, background 0.3s;
+  opacity:0;
+  transform:translateY(10px);
+  animation:fadeIn 0.4s ease forwards;
 }
 
-.left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.rank {
-  font-size: 12px;
-  color: #6b7280;
-  width: 20px;
-}
-
-.avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-}
-
-/* ===== SCORE CIRCLE ===== */
-.score {
-  min-width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 18px;
-  font-weight: 700;
-  color: white;
-}
-
-.blue { background: #2563eb; }
-.green { background: #22c55e; }
-.light { background: #60a5fa; }
-.soft { background: #4ade80; }
-
-/* ===== ANIMATION ===== */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
-/* stagger */
-.row:nth-child(1) { animation-delay: 0.05s; }
-.row:nth-child(2) { animation-delay: 0.1s; }
-.row:nth-child(3) { animation-delay: 0.15s; }
-.row:nth-child(4) { animation-delay: 0.2s; }
-.row:nth-child(5) { animation-delay: 0.25s; }
-.row:nth-child(6) { animation-delay: 0.3s; }
-.row:nth-child(7) { animation-delay: 0.35s; }
-.row:nth-child(8) { animation-delay: 0.4s; }
-.row:nth-child(9) { animation-delay: 0.45; }
-.row:nth-child(10) { animation-delay: 0.5s; }
-.row:nth-child(11) { animation-delay: 0.55; }
-.row:nth-child(12) { animation-delay: 0.6s; }
-.row:nth-child(13) { animation-delay: 0.65; }
-.row:nth-child(14) { animation-delay: 0.7s; }
+.row-grid{
+  display:grid;
+  grid-template-columns:40px 80px 1fr 50px;
+  gap:8px;
+  align-items:center;
+}
+
+.rank{
+  font-size:16px;
+  color:#6b7280;
+  font-weight:600;
+  padding-top:6px;
+}
+
+.zone-name{
+  font-size:18px;
+  font-weight:800;
+  padding-top:2px;
+}
+
+.zone-total{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:white;
+  font-size:18px;
+  font-weight:900;
+}
+
+.blue{background:#2563eb;}
+.green{background:#22c55e;}
+.light{background:#60a5fa;}
+.soft{background:#4ade80;}
+
+/* ===== RIVALRIES ===== */
+
+.section-title{
+  font-size:22px;
+  font-weight:800;
+  margin-bottom:14px;
+}
+
+.rivalry-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+
+.rivalry-card{
+  background:white;
+  border-radius:18px;
+  padding:6px 14px;
+  box-shadow:0 3px 14px rgba(0,0,0,0.08);
+}
+
+.rivalry-label{
+  font-size:13px;
+  font-weight:800;
+  color:#ef4444;
+}
+
+.rivalry-battle{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:4px;
+}
+
+.rival-player{
+  text-align:center;
+  width:100px;
+}
+
+.rival-player-name{
+  font-size:15px;
+  font-weight:800;
+}
+
+.rival-player-score{
+  font-size:34px;
+  font-weight:900;
+  color:#16a34a;
+  margin-top:6px;
+}
+
+.vs{
+  font-size:24px;
+  font-weight:900;
+  color:#ef4444;
+}
 
 /* ===== FOOTER ===== */
-.footer {
-  text-align: center;
-  margin-top: 16px;
-  font-size: 14px;
+
+.footer{
+  text-align:center;
+  margin-top:18px;
+  font-size:14px;
 }
-.footer span {
-  color: #22c55e;
+
+.footer span{
+  color:#22c55e;
 }
 
 </style>
@@ -229,14 +305,48 @@ body {
 <div class="container">
 
 <div class="title">Maa ki khushi</div>
-<div class="subtitle">Mother’s Day Special</div>
 
-<div style="text-align:center">
-  <div class="badge">LEADERBOARD</div>
+<div class="subtitle">
+  Mother’s Day Special
 </div>
 
-<div class="top" id="top"></div>
-<div class="list" id="list"></div>
+<!-- ===== TABS ===== -->
+
+<div class="tabs">
+
+  <button class="tab-btn active"
+    onclick="showTab('leaderboard',this)">
+    Leaderboard
+  </button>
+
+  <button class="tab-btn"
+    onclick="showTab('rivalry',this)">
+    Rivalries
+  </button>
+
+</div>
+
+<!-- ===== LEADERBOARD ===== -->
+
+<div id="leaderboard-tab">
+
+  <div class="top" id="top"></div>
+
+  <div class="list" id="list"></div>
+
+</div>
+
+<!-- ===== RIVALRIES ===== -->
+
+<div id="rivalry-tab" style="display:none;">
+
+  <div class="section-title">
+    🔥 Close Zone Battles
+  </div>
+
+  <div class="rivalry-wrap" id="rivalries"></div>
+
+</div>
 
 <div class="footer">
   Keep booking. <span>Keep smiling.</span>
@@ -246,70 +356,307 @@ body {
 
 <script>
 
-const API_URL = "https://script.google.com/macros/s/AKfycbwb821OJkxRoRC4fkecgU0VU1dMP3l3wZ51XqyT5tl_E__SIvORpzrVyO34u-Mfhh4L/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycby9mpB6fR2caqBX-_48T-EfM51ZiJZWtcl0bghG2NcSbRPhkNDe0ofKTlhtkx1oFTS5/exec";
 
-async function loadData() {
+/* ===== TAB SWITCH ===== */
+
+function showTab(tab,btn){
+
+  document.getElementById("leaderboard-tab").style.display = "none";
+  document.getElementById("rivalry-tab").style.display = "none";
+
+  document.getElementById(tab + "-tab").style.display = "block";
+
+  document.querySelectorAll(".tab-btn").forEach(b=>{
+    b.classList.remove("active");
+  });
+
+  btn.classList.add("active");
+
+}
+
+/* ===== LOAD DATA ===== */
+
+async function loadData(){
+
   const res = await fetch(API_URL + "?t=" + Date.now());
-  const data = await res.json();
 
-  data.sort((a,b)=>b.score-a.score);
+  const data = await res.json();
 
   const topDiv = document.getElementById("top");
   const listDiv = document.getElementById("list");
+  const rivalryDiv = document.getElementById("rivalries");
 
   topDiv.innerHTML = "";
   listDiv.innerHTML = "";
+  rivalryDiv.innerHTML = "";
 
-  const topScore = data[0]?.score;
-  const toppers = data.filter(p => p.score === topScore);
+  /* ===== BUILD ZONES ===== */
 
-  toppers.forEach(p=>{
+  const zoneTotals = {};
+
+  data.forEach(p=>{
+
+    const zone = p.zone || "Unknown";
+
+    if(!zoneTotals[zone]){
+
+      zoneTotals[zone] = {
+        total:0,
+        members:[]
+      };
+
+    }
+
+    zoneTotals[zone].total += Number(p.score || 0);
+
+    zoneTotals[zone].members.push({
+      name:p.name,
+      photo:p.photo,
+      score:p.score
+    });
+
+  });
+
+  /* ===== SORT ===== */
+
+  const zones = Object.entries(zoneTotals)
+    .sort((a,b)=>b[1].total - a[1].total);
+
+  /* ===== TOP ZONE ===== */
+
+  const topScore = zones[0][1].total;
+
+  const topZones = zones.filter(z => z[1].total === topScore);
+
+  topZones.forEach(([zone,data])=>{
+
+    let membersHTML = "";
+
+    data.members.forEach(member=>{
+
+      membersHTML += `
+
+        <div class="member-row">
+
+          <div class="member-left">
+
+            <img class="member-photo"
+              src="${member.photo}">
+
+            <div class="member-name">
+              ${member.name}
+            </div>
+
+          </div>
+
+          <div class="member-score">
+            ${member.score}
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
     const div = document.createElement("div");
+
     div.className = "top-card";
 
     div.innerHTML = `
-      <div class="avatar-wrap">
-        <div class="crown">👑</div>
-        <img class="top-avatar" src="${p.photo}">
+
+      <div class="top-grid">
+
+        <div class="rank">
+          1
+        </div>
+
+<div class="top-zone">
+
+  <div style="
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    line-height:1;
+  ">
+
+    <div style="
+      font-size:18px;
+      margin-bottom:6px;
+      filter:drop-shadow(0 0 6px gold);
+      animation:crownBounce 1.2s infinite;
+    ">
+      👑
+    </div>
+
+    <div>
+      ${zone}
+    </div>
+
+  </div>
+
+</div>
+
+        <div>
+          ${membersHTML}
+        </div>
+
+        <div class="top-total">
+          ${data.total}
+        </div>
+
       </div>
-      <div class="top-name">${p.name}</div>
-      <div class="top-score">${p.score}</div>
+
     `;
 
     topDiv.appendChild(div);
+
   });
 
-  const rest = data.filter(p => p.score !== topScore);
+  /* ===== REST ===== */
 
-  let rank = toppers.length + 1;
+  const rest = zones.filter(z => z[1].total !== topScore);
+
+  let rank = topZones.length + 1;
+
   const colors = ["blue","green","light","soft"];
 
-  rest.forEach((p, i)=>{
+  rest.forEach(([zone,data],i)=>{
 
-  // dense ranking
-  if(i > 0 && p.score !== rest[i-1].score){
-    rank++;
-  }
+    if(i > 0 && data.total !== rest[i-1][1].total){
+      rank++;
+    }
 
-    const row = document.createElement("div");
-    row.className = "row";
+    let membersHTML = "";
+
+    data.members.forEach(member=>{
+
+      membersHTML += `
+
+        <div class="member-row">
+
+          <div class="member-left">
+
+            <img class="member-photo"
+              src="${member.photo}">
+
+            <div class="member-name">
+              ${member.name}
+            </div>
+
+          </div>
+
+${data.members.length > 1 ? `
+  <div class="member-score">
+    ${member.score}
+  </div>
+` : ``}
+
+        </div>
+
+      `;
+
+    });
 
     const color = colors[i % colors.length];
 
+    const row = document.createElement("div");
+
+    row.className = "row";
+
+    row.style.animationDelay = (i * 0.05) + "s";
+
     row.innerHTML = `
-      <div class="left">
-        <div class="rank">${rank}</div>
-        <img class="avatar" src="${p.photo}">
-        <div>${p.name}</div>
+
+      <div class="row-grid">
+
+        <div class="rank">
+          ${rank}
+        </div>
+
+        <div class="zone-name">
+          ${zone}
+        </div>
+
+        <div>
+          ${membersHTML}
+        </div>
+
+        <div class="zone-total ${color}">
+          ${data.total}
+        </div>
+
       </div>
-      <div class="score ${color}">${p.score}</div>
+
     `;
 
     listDiv.appendChild(row);
+
   });
+
+  /* ===== RIVALRIES ===== */
+
+  for(let i=0;i<zones.length-1;i++){
+
+    const current = zones[i];
+    const next = zones[i+1];
+
+    const diff = current[1].total - next[1].total;
+
+    if(diff <= 1){
+
+      const card = document.createElement("div");
+
+      card.className = "rivalry-card";
+
+      card.innerHTML = `
+
+        <div class="rivalry-battle">
+
+          <div class="rival-player">
+
+            <div class="rival-player-name">
+              ${current[0]}
+            </div>
+
+            <div class="rival-player-score">
+              ${current[1].total}
+            </div>
+
+          </div>
+
+          <div class="vs">
+            ⚔️
+          </div>
+
+          <div class="rival-player">
+
+            <div class="rival-player-name">
+              ${next[0]}
+            </div>
+
+            <div class="rival-player-score">
+              ${next[1].total}
+            </div>
+
+          </div>
+
+        </div>
+
+      `;
+
+      rivalryDiv.appendChild(card);
+
+    }
+
+  }
+
 }
 
-setInterval(loadData, 4000);
+setInterval(loadData,4000);
+
 loadData();
 
 </script>
